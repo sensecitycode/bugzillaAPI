@@ -37,12 +37,16 @@ request({
 
 //POST router
 router.post('/search', function (req,res){
+  //  console.log("/update router");
+   req.body.params[0].token = bugToken;
    request({
     url: 'http://nam.ece.upatras.gr/bugzilla/jsonrpc.cgi',
     method: "POST",
+    headers: {'content-type': 'application/json'},
     json: req.body
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
+
             console.log(req.body);
             if (response.body.result !== null )
             {
@@ -51,15 +55,17 @@ router.post('/search', function (req,res){
             }
             else
             {
-              console.log("No bugs found");
-              res.send({"message":"No bugs found"});
+              console.log(response.body.error);
+              res.send([response.body.error]);
             }
+
         }
         else {
             console.log("error: " + error);
         }
     });
 });
+
 
 
 
