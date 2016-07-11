@@ -39,6 +39,9 @@ request({
 router.post('/search', function (req,res){
   //  console.log("/update router");
    req.body.params[0].token = bugToken;
+   
+   console.log(req.body);
+   
    request({
     url: 'http://nam.ece.upatras.gr/bugzilla/jsonrpc.cgi',
     method: "POST",
