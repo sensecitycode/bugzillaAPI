@@ -4,16 +4,18 @@ var router = express.Router();
 // var fs = require('fs');
 var request = require('request');
 
-
+var config = require('app-config');
 
 //Bugzilla login
-var bugUrl = "http://nam.ece.upatras.gr/bugzilla/jsonrpc.cgi";
+var bugUrl = config.config.bugUrl;
+
 var loginData =
 {
 "method": "User.login",
-"params": [{"login":"info@sense.city","password":"1nf0sense"}],
+"params": [{"login":config.config.login,"password":config.config.pwd}],
 "id": 1
 };
+
 var bugToken="";
 request({
     url: bugUrl,

@@ -10,6 +10,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+var config = require('app-config');
 
 //headers
 app.use(function (req, res, next) {
@@ -35,5 +36,5 @@ app.use(function (req, res, next) {
 app.use('/bugs', require('./routes/api'));
 
 // start server
-app.listen(3001);
-console.log('API is running on port 3001');
+app.listen(config.config.port);
+console.log('API is running on port '+config.config.port);
