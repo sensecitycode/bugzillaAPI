@@ -45,7 +45,7 @@ router.post('/search', function (req,res){
    console.log(req.body);
    
    request({
-    url: 'http://nam.ece.upatras.gr/bugzilla/jsonrpc.cgi',
+    url: config.config.bugUrl,
     method: "POST",
     headers: {'content-type': 'application/json'},
     json: req.body
