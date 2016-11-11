@@ -55,7 +55,8 @@ router.post('/search', function (req,res){
             console.log(req.body);
             if (response.body.result !== null )
             {
-				console.log("<<<<   BUGS  ================>"+response.body.result.bugs);
+				console.log("<<<<   BUGS  ================>"+response.body.result.bugs[0]);
+				console.log("<<<<   BUGS  ================>"+response.body.result.bugs[1]);
               console.log("problem reported " + response.body.result.bugs.length);
               res.send(response.body.result.bugs);
             }
